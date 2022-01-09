@@ -249,3 +249,9 @@ Links:
 [9] https://github.com/mapillary/OpenSfM/blob/master/bin/opensfm_run_all
 [10] https://github.com/mapillary/OpenSfM/blob/main/opensfm/actions/detect_features.py
 [11] http://cdimage.ubuntu.com/ubuntu-base/releases
+
+_______________________________________________________________________________________________________________
+
+To donate:
+
+https://www.paypal.com/donate/?hosted_button_id=SZABYRV48SAXW
