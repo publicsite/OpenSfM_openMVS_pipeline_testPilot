@@ -1,5 +1,8 @@
 #!/bin/sh
 
+OLD_UMASK="$(umask)"
+umask 0022
+
 if ! [ -d "$1" ]; then
 printf "Argument 1: Dataset \"$1\" does not exist.\n"
 exit
@@ -50,3 +53,6 @@ fi
 cd ../../images
 
 find . -name "${2}*" | cut -c 3- > ../submodels/submodel_$3/image_list.txt
+
+umask "${OLD_UMASK}"
+
