@@ -1,5 +1,8 @@
 #!/bin/sh
 
+OLD_UMASK="$(umask)"
+umask 0022
+
 export DEBIAN_FRONTEND=noninteractive
 
 # Install apt-getable dependencies
@@ -71,3 +74,6 @@ sed -i "s#full_queue_timeout = 120#full_queue_timeout = 5000#g" /source/OpenSfM/
 sed -i "s#timeout=full_queue_timeout#timeout=None#g" /source/OpenSfM/opensfm/actions/detect_features.py
 sed -i "s#log.memory_available()#-1#g" /source/OpenSfM/opensfm/actions/detect_features.py
 python3 setup.py build
+
+umask "${OLD_UMASK}"
+
