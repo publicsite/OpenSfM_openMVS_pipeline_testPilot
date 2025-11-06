@@ -1,4 +1,8 @@
 #!/bin/sh
+
+OLD_UMASK="$(umask)"
+umask 0022
+
 openMVSbin="/source/OpenMVS/bin"
 
 if ! [ -d "$1" ]; then
@@ -42,3 +46,6 @@ ${openMVSbin}/ReconstructMesh scene_dense.mvs
 ##we comment RefineMesh out as it is too slow, and optional.
 #${openMVSbin}/RefineMesh scene_dense_mesh.mvs --resolution-level 2 --stages 10 # Note, higher stages results in quicker times
 ${openMVSbin}/TextureMesh --export-type obj --resolution-level 2 --decimate 0.05 scene_dense_mesh.mvs
+
+umask "${OLD_UMASK}"
+
