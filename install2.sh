@@ -1,4 +1,8 @@
 #!/bin/sh
+
+OLD_UMASK="$(umask)"
+umask 0022
+
 #Prepare and empty machine for building:
 apt-get update && apt-get install
 apt-get -y install git cmake libpng-dev libjpeg-dev libtiff-dev libglu1-mesa-dev libeigen3-dev
@@ -68,3 +72,6 @@ cmake . ../openMVS -DCMAKE_BUILD_TYPE=Release -DVCG_ROOT="$main_path/vcglib" -DB
 
 #build OpenMVS library:
 make -j2
+
+umask "${OLD_UMASK}"
+
