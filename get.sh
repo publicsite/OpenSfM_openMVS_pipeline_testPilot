@@ -1,4 +1,7 @@
 #!/bin/sh
+OLD_UMASK="$(umask)"
+umask 0022
+
 wget http://cdimage.ubuntu.com/ubuntu-base/releases/20.04.2/release/ubuntu-base-20.04.1-base-amd64.tar.gz
 mkdir rootfs
 sudo tar -xf ubuntu-base-20.04.1-base-amd64.tar.gz -C rootfs
@@ -23,3 +26,6 @@ sudo cp -a makeSubmodelStructure.sh rootfs/source/OpenSfM/
 sudo cp -a runRest.sh rootfs/source/OpenSfM/
 
 #sudo rm rootfs/etc/resolv.conf
+
+umask "${OLD_UMASK}"
+
